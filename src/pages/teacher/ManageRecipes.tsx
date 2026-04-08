@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { useNavigate } from 'react-router-dom'
 import {
   BarChart3,
   ChefHat,
   Eye,
   LayoutDashboard,
+  LogOut,
   Plus,
   Save,
   Search,
@@ -64,6 +66,7 @@ function formatRating(rating: number) {
 }
 
 export default function ManageRecipes() {
+  const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState<TeacherSection>('recipes')
   const [recipes, setRecipes] = useState(INITIAL_RECIPES)
   const [students] = useState(INITIAL_STUDENTS)
@@ -179,6 +182,11 @@ export default function ManageRecipes() {
     setFeedback('Configuracoes salvas localmente no painel do professor.')
   }
 
+  function handleLogout() {
+    setFeedback('Sessao encerrada. Redirecionando para o login.')
+    navigate('/login')
+  }
+
   const topRecipes = [...recipes].sort((a, b) => b.students - a.students).slice(0, 3)
   const reportData = {
     '7d': { revenue: 'R$ 4.800', retention: '78%', classes: '12 aulas' },
@@ -213,6 +221,15 @@ export default function ManageRecipes() {
               </Button>
             )
           })}
+
+          <Button
+            variant="ghost"
+            onClick={handleLogout}
+            className="h-12 justify-start gap-4 rounded-2xl px-4 text-left text-white/75 hover:bg-white/10 hover:text-white"
+          >
+            <LogOut className="h-5 w-5 shrink-0" />
+            <span className="whitespace-normal">Deslogar</span>
+          </Button>
         </nav>
       </aside>
 
