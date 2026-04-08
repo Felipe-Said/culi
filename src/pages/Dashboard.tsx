@@ -118,7 +118,7 @@ export function Dashboard() {
       <main className="flex-1 p-8 lg:p-12 overflow-y-auto">
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <div>
-            <h1 className="text-4xl text-secondary mb-2">Benvenuto, Chef Samuel</h1>
+            <h1 className="text-4xl text-secondary mb-2">Benvenuto, Chef</h1>
             <p className="text-muted-foreground">O que vamos preparar hoje para encantar o paladar?</p>
           </div>
 
